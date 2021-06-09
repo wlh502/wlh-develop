@@ -1,4 +1,4 @@
-package com.example.wlh_develop.config;
+package com.wlh.develop.config;
 
 import org.springframework.context.annotation.Configuration;
 import org.springframework.web.servlet.config.annotation.ResourceHandlerRegistry;

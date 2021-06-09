@@ -8,9 +8,9 @@
         <version>2.4.6</version>
         <relativePath/> <!-- lookup parent from repository -->
     </parent>
-    <groupId>com.example</groupId>
-    <artifactId>wlh_develop</artifactId>
-    <version>0.0.1-SNAPSHOT</version>
+    <groupId>com.wlh</groupId>
+    <artifactId>develop</artifactId>
+    <version>1.0.0.0-SNAPSHOT</version>
     <name>wlh_develop</name>
     <description>Demo project for Spring Boot</description>
     <properties>

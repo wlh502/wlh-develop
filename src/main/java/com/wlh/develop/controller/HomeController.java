@@ -1,4 +1,4 @@
-package com.example.wlh_develop.controller;
+package com.wlh.develop.controller;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;

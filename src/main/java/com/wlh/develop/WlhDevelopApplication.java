@@ -1,4 +1,4 @@
-package com.example.wlh_develop;
+package com.wlh.develop;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
