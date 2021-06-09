@@ -8,6 +8,6 @@ import org.springframework.web.bind.annotation.ResponseBody;
 public class HomeController {
     @RequestMapping("/")
     public String home(){
-        return "home";
+        return "forward:/home.html";
     }
 }
