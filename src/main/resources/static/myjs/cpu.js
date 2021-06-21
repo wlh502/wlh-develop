@@ -4,7 +4,7 @@
 function subscribeCpuUseRate(){
     if(stompClient !== null){
         cpuUseRateNotice();
-        stompClient.subscribe("/cpuinfo/cpuUseRate",function(message){
+        stompClient.subscribe("/user/cpuinfo/cpuUseRate",function(message){
             console.log(message);
         });
         console.log("cpu使用率订阅成功");
