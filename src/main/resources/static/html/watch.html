@@ -39,6 +39,7 @@
 </div>
 <script type="text/javascript">
     $(function(){
+        LOGIN_USER = $(window.parent.document).find("#loginUser").text();
         var subscribeArray = [subscribeCpuUseRate]
         connect(subscribeArray);
     });

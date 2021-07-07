@@ -1,13 +1,14 @@
 var stompClient = null;
-
+const HOST = document.domain;
 // 设置 WebSocket 进入端点
-var SOCKET_ENDPOINT = "/systeminfo";
+const SOCKET_ENDPOINT = "/systeminfo";
 
 
 
 function connect(subscribe){
     if(stompClient == null){
-        var socket = new SockJS(SOCKET_ENDPOINT);
+        // 保证请求的域名和浏览器域名一致，否则websocket获取不到httpsession
+        const socket = new SockJS(SOCKET_ENDPOINT);
         stompClient = Stomp.over(socket);
         stompClient.connect({}, function(frame) {
             console.log("websocket连接成功")

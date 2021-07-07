@@ -1,10 +1,12 @@
+var LOGIN_USER = null;
+
 /**
  * 订阅CPU使用率
  */
 function subscribeCpuUseRate(){
     if(stompClient !== null){
         cpuUseRateNotice();
-        stompClient.subscribe("/user/cpuinfo/cpuUseRate",function(message){
+        stompClient.subscribe("/user/"+LOGIN_USER+"/cpuinfo/cpuUseRate",function(message){
             console.log(message);
         });
         console.log("cpu使用率订阅成功");
