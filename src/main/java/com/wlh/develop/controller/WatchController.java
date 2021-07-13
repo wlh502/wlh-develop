@@ -21,11 +21,10 @@ public class WatchController {
     }
 
     @MessageMapping("/cpuUseRate")
-    //@SendToUser("/cpuinfo/cpuUseRate")
-    //@Scheduled
     public void cpuUseRate(StompHeaderAccessor headerAccessor) {
         String sessionId =
                 (String)headerAccessor.getSessionAttributes().get(HttpSessionHandshakeInterceptor.HTTP_SESSION_ID_ATTR_NAME);
-        simpMessagingTemplate.convertAndSendToUser(sessionId,"/cpuinfo/cpuUseRate",sessionId);
+        // 因为目前没有登录，通过session发送一对一消息，不然可以使用convertAndSendToUser方法
+        simpMessagingTemplate.convertAndSend("/cpuinfo/cpuUseRate/"+sessionId,sessionId);
     }
 }

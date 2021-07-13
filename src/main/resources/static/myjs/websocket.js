@@ -7,7 +7,6 @@ const SOCKET_ENDPOINT = "/systeminfo";
 
 function connect(subscribe){
     if(stompClient == null){
-        // 保证请求的域名和浏览器域名一致，否则websocket获取不到httpsession
         const socket = new SockJS(SOCKET_ENDPOINT);
         stompClient = Stomp.over(socket);
         stompClient.connect({}, function(frame) {
