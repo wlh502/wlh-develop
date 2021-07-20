@@ -40,6 +40,12 @@
 <!--            <artifactId>spring-boot-devtools</artifactId>-->
 <!--            <optional>true</optional>-->
 <!--        </dependency>-->
+
+        <!--quartz依赖-->
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-quartz</artifactId>
+        </dependency>
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-websocket</artifactId>
@@ -49,6 +55,20 @@
             <artifactId>spring-boot-starter-test</artifactId>
             <scope>test</scope>
         </dependency>
+<!--        <dependency>-->
+<!--            <groupId>com.wlh</groupId>-->
+<!--            <artifactId>quartz</artifactId>-->
+<!--            <version>2.2.3</version>-->
+<!--            <scope>system</scope>-->
+<!--            <systemPath>${project.basedir}/lib/quartz-2.2.3.jar</systemPath>-->
+<!--        </dependency>-->
+<!--        <dependency>-->
+<!--            <groupId>com.wlh</groupId>-->
+<!--            <artifactId>quartz-job</artifactId>-->
+<!--            <version>2.2.3</version>-->
+<!--            <scope>system</scope>-->
+<!--            <systemPath>${project.basedir}/lib/quartz-jobs-2.2.3.jar</systemPath>-->
+<!--        </dependency>-->
     </dependencies>
 
     <build>
@@ -63,9 +83,21 @@
                             <artifactId>lombok</artifactId>
                         </exclude>
                     </excludes>
+<!--                    <includeSystemScope>true</includeSystemScope>-->
                 </configuration>
             </plugin>
         </plugins>
+<!--        &lt;!&ndash; 引入本地资源 &ndash;&gt;-->
+<!--        <resources>-->
+<!--            <resource>-->
+<!--                <directory>lib</directory>-->
+<!--                <targetPath>lib/</targetPath>-->
+<!--                <includes>-->
+<!--                    <include>**/*.jar</include>-->
+<!--                </includes>-->
+<!--            </resource>-->
+<!--        </resources>-->
+
     </build>
 
 </project>

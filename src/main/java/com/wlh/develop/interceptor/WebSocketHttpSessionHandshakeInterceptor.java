@@ -13,7 +13,7 @@ public class WebSocketHttpSessionHandshakeInterceptor extends HttpSessionHandsha
     public boolean beforeHandshake(ServerHttpRequest request, ServerHttpResponse response, WebSocketHandler wsHandler, Map<String, Object> attributes) throws Exception {
 
          super.beforeHandshake(request, response, wsHandler, attributes);
-
+         //System.out.println("1:"+Thread.currentThread().getId());
         // todo 全局存储websocket session
           //attributes.get(HTTP_SESSION_ID_ATTR_NAME);
          return true;

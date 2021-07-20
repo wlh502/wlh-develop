@@ -22,6 +22,8 @@ public class WatchController {
 
     @MessageMapping("/cpuUseRate")
     public void cpuUseRate(StompHeaderAccessor headerAccessor) {
+        //System.out.println("2:"+Thread.currentThread().getId());
+        // 任务触发
         String sessionId =
                 (String)headerAccessor.getSessionAttributes().get(HttpSessionHandshakeInterceptor.HTTP_SESSION_ID_ATTR_NAME);
         // 因为目前没有登录，通过session发送一对一消息，不然可以使用convertAndSendToUser方法
