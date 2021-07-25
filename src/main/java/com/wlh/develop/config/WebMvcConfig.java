@@ -2,10 +2,7 @@ package com.wlh.develop.config;
 
 import org.springframework.context.annotation.Configuration;
 import org.springframework.core.Ordered;
-import org.springframework.web.servlet.config.annotation.ResourceHandlerRegistry;
-import org.springframework.web.servlet.config.annotation.ViewControllerRegistry;
-import org.springframework.web.servlet.config.annotation.WebMvcConfigurationSupport;
-import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
+import org.springframework.web.servlet.config.annotation.*;
 
 @Configuration
 public class WebMvcConfig extends WebMvcConfigurationSupport  {
@@ -15,11 +12,12 @@ public class WebMvcConfig extends WebMvcConfigurationSupport  {
         registry.addResourceHandler("/**").addResourceLocations("classpath:/static/");
     }
 
-//    @Override
-//    public void addViewControllers(ViewControllerRegistry registry) {
-//        registry.addViewController("/").setViewName("index");
-//        registry.setOrder(Ordered.HIGHEST_PRECEDENCE);
-//        super.addViewControllers(registry);
-//    }
-
+    /**
+     * 后续一些http拦截器可以定义在这里
+     * @param registry
+     */
+    @Override
+    protected void addInterceptors(InterceptorRegistry registry) {
+        super.addInterceptors(registry);
+    }
 }

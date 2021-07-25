@@ -17,5 +17,5 @@ function subscribeCpuUseRate(){
 
 
 function cpuUseRateNotice(){
-    stompClient.send("/cpu_watch/cpuUseRate");
+    stompClient.send("/cpuWatch/cpuUseRate",{"userId":LOGIN_USER,"jobName":"cpuUseRateJob"});
 }

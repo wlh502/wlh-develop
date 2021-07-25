@@ -24,8 +24,8 @@ public class WebSocketConfig implements WebSocketMessageBrokerConfigurer {
 
     @Override
     public void configureMessageBroker(MessageBrokerRegistry registry) {
-        registry.setApplicationDestinationPrefixes("/cpu_watch","/memory_watch");
-        registry.enableSimpleBroker("/cpuinfo","/memroyinfo")
+        registry.setApplicationDestinationPrefixes("/cpuWatch","/memoryWatch");
+        registry.enableSimpleBroker("/cpuinfo","/memoryInfo")
                 .setHeartbeatValue(new long[]{10000,10000}).setTaskScheduler(new DefaultManagedTaskScheduler());
     }
 }
