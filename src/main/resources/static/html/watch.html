@@ -12,10 +12,13 @@
     <link rel="stylesheet" href="/css/layuiadmin.css">
 
     <script type="text/javascript" src="/js/jquery.min.js"></script>
+    <script type="text/javascript" src="/echarts/echarts.min.js"></script>
+
     <script type="text/javascript" src="/js/socketjs.min.js"></script>
     <script type="text/javascript" src="/js/stomp.min.js"></script>
     <script type="text/javascript" src="/myjs/websocket.js"></script>
     <script type="text/javascript" src="/myjs/cpu.js"></script>
+
 </head>
 <body>
 <div class="layui-fluid">
@@ -27,8 +30,7 @@
                         <div class="layui-card-header">CPU使用率</div>
                         <div class="layui-card-body">
                             <div class="layui-carousel layadmin-carousel layadmin-shortcut">
-<!--                                <div carousel-item>-->
-<!--                                </div>-->
+                                <div id="cpuUseRate" style="width: 600px;height:180px;"></div>
                             </div>
                         </div>
                     </div>

@@ -22,27 +22,29 @@ import java.util.concurrent.ConcurrentHashMap;
 public class WatchController {
 
     private final Scheduler scheduler;
-    private final Map<String,JobDetail> jobMap;
+    private final Map<String, JobDetail> jobMap;
 
 
     @Autowired
-    public WatchController(Scheduler scheduler,Map<String,JobDetail> jobMap) {
+    public WatchController(Scheduler scheduler, Map<String, JobDetail> jobMap) {
         this.scheduler = scheduler;
         this.jobMap = jobMap;
     }
 
     @MessageMapping("/cpuUseRate")
-    public void cpuUseRate(@Header("userId") String userId,@Header("jobName")String jobName) throws Exception {
-       Trigger trigger = TriggerBuilder.newTrigger()
-                .withIdentity("cpuUseRate","cpuUseRate")
-                .startNow()
-                .withSchedule(SimpleScheduleBuilder.simpleSchedule().withIntervalInSeconds(3).repeatForever())
-                .usingJobData("userId",userId)
-                .build();
-       Set<Trigger> triggerSet = new HashSet<>();
-       triggerSet.add(trigger);
-       scheduler.scheduleJob(jobMap.get(jobName),triggerSet,true);
+    public void cpuUseRate(@Header("userId") String userId, @Header("jobName") String jobName) throws Exception {
+        String identity = "cpuUseRate_" + userId;
 
-       // scheduler.st
+        Trigger trigger = TriggerBuilder.newTrigger()
+                .withIdentity(identity, identity)
+                .forJob(jobMap.get(jobName)) // 绑定对应的job
+                .startNow() // 加入任务后，立刻开始
+                .withSchedule(SimpleScheduleBuilder.simpleSchedule().withIntervalInSeconds(3).repeatForever())// 定义执行时间
+                .usingJobData("userId", userId) // 参数传递
+                .build();
+
+        if (!scheduler.checkExists(trigger.getKey())) {
+            scheduler.scheduleJob(trigger);
+        }
     }
 }
