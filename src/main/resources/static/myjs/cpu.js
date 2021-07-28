@@ -22,5 +22,28 @@ function cpuUseRateNotice(){
 }
 
 function initCpuUseRateChart(chart){
-
+    chart.setOption({
+        yAxis:{
+            type:'value',
+            min:0,
+            max:100,
+            splitNumber:5
+        },
+        xAxis: {
+            type: 'time',
+            boundaryGap: false
+        },
+        series: [
+            {
+                type:'line',
+                smooth:true,
+                symbol: 'none',
+                stack: 'a',
+                areaStyle: {
+                    normal: {}
+                },
+                data: []
+            }
+        ]
+    });
 }
