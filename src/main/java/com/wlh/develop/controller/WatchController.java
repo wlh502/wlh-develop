@@ -42,7 +42,7 @@ public class WatchController {
                 .withIdentity(identity, identity)
                 .forJob(jobMap.get(jobName)) // 绑定对应的job
                 .startNow() // 加入任务后，立刻开始
-                .withSchedule(SimpleScheduleBuilder.simpleSchedule().withIntervalInSeconds(3).repeatForever())// 定义执行时间
+                .withSchedule(SimpleScheduleBuilder.simpleSchedule().withIntervalInSeconds(1).repeatForever())// 定义执行时间
                 .usingJobData("userId", userId) // 参数传递
                 .usingJobData("shellPath", ShellUtils.auth(resource.getFile().getAbsolutePath()))
                 .build();

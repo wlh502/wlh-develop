@@ -9,8 +9,17 @@ function subscribeCpuUseRate(){
         initCpuUseRateChart(cpuUseRateChart);
         cpuUseRateNotice();
         // 后续实现登录了，使用/user通道，现在先用session代替
-        stompClient.subscribe("/cpuinfo/cpuUseRate/"+LOGIN_USER,function(message){
-            //console.log(cpuUseRateChart)
+       // cpuUseRateChart.showLoading();
+        stompClient.subscribe("/cpuinfo/cpuUseRate/"+LOGIN_USER,function(result){
+            cpuUseRateChart.setOption({
+                series: [{
+                    name:'cpuUseRate',
+                    data: [{
+                        value: result.body,
+                        name: 'CPU使用率'
+                    }]
+                }]
+            });
 
         });
     }
@@ -23,27 +32,24 @@ function cpuUseRateNotice(){
 
 function initCpuUseRateChart(chart){
     chart.setOption({
-        yAxis:{
-            type:'value',
-            min:0,
-            max:100,
-            splitNumber:5
+        tooltip: {
+            formatter: '{c}%'
         },
-        xAxis: {
-            type: 'time',
-            boundaryGap: false
-        },
-        series: [
-            {
-                type:'line',
-                smooth:true,
-                symbol: 'none',
-                stack: 'a',
-                areaStyle: {
-                    normal: {}
-                },
-                data: []
-            }
-        ]
+        series: [{
+            name:'cpuUseRate',
+            type: 'gauge',
+            progress: {
+                show: true
+            },
+            detail: {
+                valueAnimation: true,
+                formatter: '{value}'
+            },
+            data: [{
+                value: 0,
+                name: 'CPU使用率'
+            }]
+        }]
     });
+
 }

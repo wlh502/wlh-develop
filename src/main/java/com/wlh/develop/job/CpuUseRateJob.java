@@ -45,10 +45,10 @@ public class CpuUseRateJob extends QuartzJobBean {
                     )
             );
 
-            System.out.println(avgCpuUseRate);
             lastIdelTime = idleTime;
             lastTotalTime = totalCpuTime;
-           // simpMessagingTemplate.convertAndSend("/cpuinfo/cpuUseRate/"+userId,userId);
+
+            simpMessagingTemplate.convertAndSend("/cpuinfo/cpuUseRate/"+userId,avgCpuUseRate);
         }
     }
 }
